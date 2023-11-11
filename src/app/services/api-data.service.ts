@@ -14,8 +14,8 @@ import { Router, } from '@angular/router';
 
 export class ApiDataService {
 
-  private baseUrl = "http://13.124.146.19/api/";
-  private authUrl = "http://13.124.146.19/api/auth/";
+  private baseUrl = "https://sposync.com/api/";
+  private authUrl = "https://sposync.com/api/auth/";
   private httpOptions: any;
   private httpOptionsToken: any;
   private httpOptionsTokenFile: any;
