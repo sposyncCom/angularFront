@@ -133,8 +133,7 @@ export class EventSelectComponent implements OnInit {
 
 
 
-  	private responseFunc(responsef:any,):void { 
-		console.log(' FULL SCOPE response ', responsef,  );
+  	private responseFunc(responsef:any,):void {
 		this.pmarkzonea = responsef['markzone'];
 		this.pzonea = responsef['zone'];                          
 		this.piza = responsef['iz'];
