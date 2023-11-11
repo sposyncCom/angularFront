@@ -1,0 +1,155 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Live Interative Video Event Streaming</title>  
+    <meta name="description" content="free online video advertisement webcast live event streaming P2P global access IoT robot drone control with streaming django channel webRTC PWA Pion Clients raspberry pi">
+    <meta name="robots" content="index, follow" />    
+</head>
+
+    <div class="navwrapper">
+        <nav class="navbar navbar-inverse" style="background-image:  url( 'assets/img/subbuzz.jpg' ); background-repeat: no-repeat; background-size: cover;">
+        </nav>  
+    </div>
+
+    <div class="view full-page-intro"  style="background-image:  url( 'assets/img/subbuzz.jpg'  ); background-repeat: no-repeat; background-size: cover;">  
+        <h1 style="font-family: 'Raleway', sans-serif;  text-align: center;margin-bottom: 0px;margin-top: 0px;">P2P Video Messenger & Remote Lab</h1>
+        <h4 class="h4 text-center mb-5" >Your ID : {{obuser}}</h4> 
+        <div class="container" style="display: flex;">          
+            <div style="width: 100%;margin-left: 10%; ">             
+              <div>           
+                <button id = "switcho" style="font-size:13px;" type="submit" (click)="switchMonitor()" formtarget="_blank" #switcho>forMonitor</button>&nbsp;
+                <button id = "callMedia" style="font-size:13px;" type="submit" (click)="mediaReady()" formtarget="_blank" #callMedia>Media Ready</button>       
+              </div>
+              <div id="videoo" style="display: block;" >
+                <select id="selectt" style="font-size:13px;" #selectt>
+                  
+                  <!--<option value="">videoinput#1</option> -->
+                </select>
+                <button id= "buttonn" style="font-size:13px;" type="submit" formtarget="_blank" #buttonn>Test Media</button>
+                <button id = "switchv" style="font-size:13px;"  type="submit" (click)="videoMute()" formtarget="_blank" #switchv>Video Mute</button>
+                <button id = "switcha" style="font-size:13px;"  type="submit" (click)="audioMute()" formtarget="_blank" #switcha>Audio Mute</button>  
+              </div>
+            </div>
+
+            <div style="flex-grow: 1;margin-right: 10%;">              
+              <div *ngIf="callButton==true">
+                  <button style="font-size:19px;" class="btn btn-primary input-xs" (click)="initConnect()">Call</button>                 
+              </div>
+              <div *ngIf="callButton ==false">
+                <button style="font-size:19px;" class="btn btn-primary input-xs" (click)="loopCall()" ><strong>Connect</strong></button>                
+              </div>              
+            </div> <!--LeftRight-->
+      </div> <!--Partial Contianer-->
+      <br>
+  </div>
+
+<main>    
+      <div class="container">    
+        <!--Section: Main info-->
+        <section class="mt-5 wow fadeIn">
+          <!--Grid row-->
+          <div id="difference1" style="display:inline;" value="Your Video" #difference1>
+              <video id="localVideo"  width="90%" height="80%" autoplay #localVideo></video>
+          </div>
+
+          <div id="difference2" style="display:none;" value="Your Video" #difference2>
+            <img id="remoteImage"  style="display:inline;" width="70%" height="70%" autoplay (click)="fullscreen($event)" #remoteImage/>                    
+            <video id="remoteVideo"   width="90%" height="80%"  autoplay (click)="fullscreen($event)" #remoteVideo></video>      
+            <audio id="remoteAudio" style="display:none;" autoplay #remoteAudio></audio>
+          </div>
+
+          <div class="container" style="display: flex;">                
+            <div style="width: 70%; ">        
+                <div>
+                  <button id = "switchq" style="font-size:15px;" (click)="screenShare()">Screen Share</button>&nbsp;
+                  <button id = "switchr" style="font-size:15px;" (click)="recording()">Recording</button>   
+                      <div>
+                          <br/>
+                          <form id="fileInfo">
+                            <input type="file" id="fileInput" name="files" style="font-size:15px;"/>
+                          </form>                            
+                          <button (click) = "fileSend()" id="sendFile" type="submit"  style="font-size:15px;" >File Share</button>                          
+                          <a id="download"></a>    
+                      </div>
+                </div>
+          
+                <div id="diffRecord" style="display:none;" value="Your Video">   
+                  <button id="sttRecord" style="font-size:13px;" type="submit" (click)="start()" formtarget="_blank" >Start</button>
+                    <button id="stpRecord" style="font-size:13px;" type="submit" (click)="stop()" formtarget="_blank" >Stop</button>
+                    <button id="dnload" style="font-size:13px;" type="submit" (click)="download()" formtarget="_blank" >Download</button>                
+                    <button type="submit" style="font-size:15px;" (click)="langSelect()" formtarget="_blank" >MLmode</button>    
+                </div>  
+            </div>  
+          </div>               
+        </section>
+        <!--Section: Main info-->
+
+        <hr class="my-5">
+        
+        <section class="mt-5 wow fadeIn">
+          <h3 style="font-family: 'Raleway', sans-serif;  text-align: center;margin-bottom: 10px;margin-top: 0px;">Messages</h3>
+          <!--Grid row-->
+          <div class="row">          
+            <!--Grid column-->
+            <textarea id="dataChannelComb" style="overflow: auto;margin-left:5%;width: 90%;font-size: 16pt " rows="6" data-min-rows='3' [(ngModel)] = "messengerSend" #dataChannelComb></textarea>             
+                        
+            <div class="container" style="display: flex; height: 50px;">  
+              <div style="width: 40%; margin-left:5%;margin-right:0px; margin-top:10px;">
+                    <div id="lDiv" style="display: none;">
+                      <select id="ilSelect" style="font-size:15px;" >              
+                        <!--<option value="">videoinput#1</option> -->
+                      </select> &nbsp;
+                      <button id="langButton" style="font-size:15px;" >SendTrans</button>  &nbsp;&nbsp;             
+                    </div>                  
+              </div>
+               
+              <div style="flex-grow: 1; margin-left:25%;margin-right:0px;">       
+                <button id="sendButton" type="submit"  style="font-size:17px;" class="btn btn-primary input-xs" (click)="dataSend()" #sendButton>Send</button>
+              </div>          
+            </div>  
+          </div>
+          <!--Grid row-->  
+        </section>  
+      </div>    
+        <!--Container-->
+</main>
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn" style="height:210px;">
+
+  <section class="mt-5 wow fadeIn" style="margin-left:20%">
+  <br>
+    <!--Grid row-->
+    <div class="row">    
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">                    
+        <div class="col-md col-lg-offset-2 flex-center">     
+          <a routerLink="/logOut"   style="font-size:20px;"  routerLinkActive="active"><button class="btn btn-primary btn-block" style="font-size:15px;width:150px;color:rgb(226, 223, 43);"><strong>Log Out</strong></button></a>
+            &nbsp;&nbsp;  
+          <a routerLink="/p2p-call"   style="font-size:20px;"  routerLinkActive="active"><button class="btn btn-primary btn-block" style="font-size:15px;width:150px;color:rgb(226, 223, 43);" (click)="disconnect()"><strong>Hang Up</strong></button></a>       
+        </div>
+      </div>     
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <div class="col-md col-lg-offset-2 flex-center">      
+            <a routerLink="/setProfile"   style="font-size:20px;"  routerLinkActive="active"><button class="btn btn-primary btn-block" style="font-size:15px;width:150px;color:rgb(226, 223, 43);" ><strong>Profile</strong></button></a>
+              &nbsp;&nbsp;  
+            <a routerLink="/p2p-lab"   style="font-size:20px;"  routerLinkActive="active"><button class="btn btn-primary btn-block" style="font-size:15px;width:150px;color:rgb(226, 223, 43);" ><strong>ReLab</strong></button></a>  
+        </div>      
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row--> 
+  </section>
+
+  <!--Copyright-->
+  <div class="footer-copyright py-3">
+
+    <p>FUTURE DIMENSION contact:support@sposync.com</p>
+    <br>
+    © 2019 Copyright:
+    <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+  </div>
+  <!--/.Copyright-->
+</footer>
+

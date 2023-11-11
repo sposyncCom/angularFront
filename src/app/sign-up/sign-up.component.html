@@ -1,0 +1,55 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Live Interative Video Event Streaming</title>  
+    <meta name="description" content="free online video advertisement webcast live event streaming P2P global access IoT robot drone control with streaming django channel webRTC PWA Pion Clients raspberry pi">
+    <meta name="robots" content="index, follow" />    
+</head>  
+  
+  <app-nav-main></app-nav-main>
+
+  <div class="view full-page-intro"  style="background-image:  url( 'assets/img/subbuzz.jpg'  ); background-repeat: no-repeat; background-size: cover;">
+  
+   <!-- CONTIANER-->
+  </div>
+<main>
+  <!--<div class="container">-->
+    <br/><br/>    
+      <div class="center" style="margin-left:40%">
+        <h2 lass="col-md flex-center">Login</h2>
+          <div *ngIf="!is_authenticated">            
+              <label>Username </label><label></label>
+              <input type="text" name="login-username" [(ngModel)]="userLogin.username" placeholder="Username"><br/> 
+              <span *ngFor="let error of errors.username">{{ error }}</span>
+              <label>Password </label><label></label>
+              <input type="password" name="login-password" [(ngModel)]="userLogin.password1" placeholder="Password"><br/>  <br/>
+              <span *ngFor="let error of errors.password"> {{ error }}</span>
+              <label>Confirm Password </label><label></label>
+              <input type="password" name="login-password" [(ngModel)]="userLogin.password2" placeholder="Password"><br/>  <br/>
+              <span *ngFor="let error of errors.password"> {{ error }}</span>
+              <button (click)="signup()" class="btn btn-primary">Sign up</button><br/>
+              <span *ngFor="let error of errors.non_field_errors">{{ error }}</span>
+          </div>
+          <div>
+              <p style="font-size:18px;">Back to Home <a routerLink="/" class="tm-text-primary" routerLinkActive="active">Home</a>
+              </p>    
+          </div>
+      </div>
+</main>
+  
+  <!--Footer-->
+  <app-footer></app-footer>
+
+<!-- Initializations -->
+<script type="text/javascript">
+  // Animations initialization
+  new WOW().init();  
+</script> 
+<script>
+  if (!navigator.serviceWorker.controller) {
+      navigator.serviceWorker.register("/static/sw.js").then(function(reg) {
+      //    console.log("Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+</script>

@@ -1,0 +1,219 @@
+<head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>Live Interative Event Video Streaming</title>
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">     
+      <meta name="description" content="free online video advertisement webcast live event streaming P2P global access IoT robot drone control with streaming django channel webRTC PWA Pion Clients raspberry pi">
+      <meta name="robots" content="index, follow" />
+      <!-- Bootstrap CSS -->      
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+  <!-- Navbar -->
+  <app-nav-main></app-nav-main>
+ 
+  <div class="view full-page-intro"  style="background-image:  url( 'assets/img/subbuzz.jpg'  ); background-repeat: no-repeat; background-size: cover;">
+
+      <!-- Content -->
+    <div class="container" >
+      <br>
+      <br>
+      <br>
+      <h1 style = "color:rgb(238, 238, 224);font-family:'Raleway',sans-serif;text-align:center;margin-bottom:40px;margin-top:30px;">Dream Spot Streaming</h1>
+        <div id="map-canvas" style="height: 430px; border: 0px solid #AAA;">
+        </div>        
+        <!--Grid row-->
+        <div class="row wow fadeIn">        
+        <script src="datetime-polyfill.js"></script>
+        </div>
+        <!--Grid row-->
+    </div>
+      <!-- Content Container-->
+  </div>
+
+  <!--Main layout-->
+<main >
+    <section>      
+      <h2 class="my-5 h3 text-center">Register Location First then Event</h2>
+      <div class="my-5 h6 text-center">
+        <input type="text" placeholder = "Event ID for EDIT" [(ngModel)]="varslug" />
+        <button (click)="queryClick(varslug)" formtarget="_blank">Submit</button>        <!--First row-->
+      </div>
+
+      <div class="row features-small mb-5 mt-3 wow fadeIn">
+        <!--First column-->
+        <div class="col-md-4 flex-center">
+          <div></div>
+          <!--First row-->
+              <form *ngIf="addressForm" [formGroup]="addressForm" (ngSubmit)="onAddressSubmit()">
+                <table class="form-group">                    
+                    <tr>
+                      <td><label style="font-size:14px;width: 80px">Address</label></td>
+                      <td ><input type="text" class="form-control" formControlName="address"></td>
+                    </tr>
+                    <tr>
+                      <td><label style="font-size:14px;width: 80px">City</label></td>
+                      <td ><input type="text" class="form-control" id="city" formControlName="city"></td>
+                    </tr>
+                    <tr>
+                      <td><label style="font-size:14px;width: 80px">State</label></td>
+                      <td ><input type="text" class="form-control" id="state" formControlName="state"></td>
+                    </tr>
+                    <tr>
+                      <td><label style="font-size:14px;width: 80px">Postal Code</label></td>
+                      <td ><input type="text" class="form-control" id="postalCode" formControlName="postalCode"></td>
+                    </tr>
+                    <tr>
+                      <td><label style="font-size:14px;width: 80px">Country</label></td>
+                      <td ><input type="text" class="form-control" id="country" formControlName="country"></td>
+                    </tr>
+                </table>
+            
+                <br>
+                <br>
+                <div class="flex-center">
+                  <!--id="LatLngId"-->
+                  <button type="submit" (click)="locateme()">Locate Me</button>&nbsp;&nbsp;            
+                  <div *ngIf="updateF && deleteF" style="color:green">      
+                      <input style="font-size:14px;" type="submit" name="updateLoc" value="Update Location" (click)="updateLoc()"/>
+                  </div>                                          
+                  <div *ngIf="updateF && !deleteF" style="color:green">
+                    <input style="font-size:14px;" type="submit" name="updateLoc" value="Update Location" (click)="updateLoc()"/>
+                    <input style="font-size:14px;" type="submit" name="deleteLoc" value="Delete Location" (click)="delLoc()"/>
+                  </div>                  
+                  <div *ngIf="!updateF && deleteF" style="color:green">
+                    <input style="font-size:14px;" type="submit" name="updateLoc" value="Update Location" (click)="updateLoc()"/>
+                  </div>                  
+                  <div *ngIf="!updateF && !deleteF" style="color:green">
+                    <input style="font-size:14px;" type="submit"  id="rLoc" value="Register Location" (click)="regLoc()"/>
+                </div>                    
+                </div>            
+              </form>        
+        </div>    
+        <!--/First column-->
+        <!--Second column-->
+        <div class="col-md-4 flex-center">
+          
+          <form *ngIf="eventForm" [formGroup]="eventForm"   (ngSubmit)="onEventSubmit()">
+            <table class="form-group">        
+                <tr>
+                  <td><label style="font-size:14px;width: 100px">Event Type</label></td>                    
+                  <td  style="font-size:14px;">
+                    <select class="form-control" formControlName="eventType" >                          
+                          <option *ngFor="let lang of allEventType" [ngValue]="lang" >{{lang}}</option>                          
+                    </select>   
+                  </td>
+                </tr>
+                <tr>
+                  <td><label style="font-size:14px;">Event Notes</label></td>
+                  <td style="font-size:14px;"><input type="text" class="form-control" formControlName="eventNote"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="font-size:14px;">Event Spot</label></td>
+                  <td style="font-size:14px;"><input type="text" class="form-control" formControlName="eventSpot"></td>
+                </tr> 
+                
+                <tr>
+                  <td><label style="font-size:14px;">Event Fee</label></td>
+                  <td style="font-size:14px;"><input type="text" class="form-control" formControlName="eventFee"></td>
+                </tr> 
+
+                <tr>
+                  <td><label style="font-size:14px;">Start Time</label></td>
+                  <td style="font-size:14px;"><input type="datetime-local" class="form-control" value = "{{ this.startTime |date:'yyyy-MM-dd hh.mm ss'  }}" formControlName="eventStart"></td>
+                </tr> 
+
+                <tr>
+                  <td><label style="font-size:14px;">End Time</label></td>
+                  <td style="font-size:14px;"><input type="datetime-local" class="form-control" value = "{{ this.endTime |date:'yyyy-MM-dd hh.mm ss'  }}" formControlName="eventEnd"></td>
+                </tr> 
+                
+                <tr>
+                  <td><label style="font-size:14px;">Icon File</label></td>                  
+                  <td style="font-size:14px;"> 
+                    <input formControlName="eventIconFile" id="file" type="file" class="form-control" enctype="multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"  accept="image/jpeg,image/png,image/gif"  (change)="onFileChange($event)">
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><label style="font-size:14px;">Private Mode </label></td>
+                  <td><input type="checkbox" class="form-control" formControlName="eventMode"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="font-size:14px;">Audience</label></td>
+                  <td style="font-size:14px;" name ="mjoiner">                      
+                    <input type="text" class="form-control" formControlName="eventAudience">
+                  </td>
+                </tr>
+            </table>    
+          
+            <br>
+            <div class="flex-center">              
+              <div *ngIf="updateF && deleteF" style="color:green">                      
+                <input style="font-size:14px;" type="submit" name="updateEV" value="Update Event" (click)="updateEV()"/>
+                <input style="font-size:14px;" type="submit" name="deleteEV" value="Delete Event" (click)="deleteEV()"/>
+              </div>
+              <div *ngIf="updateF && !deleteF" style="color:green">  
+                <input style="font-size:14px;" type="submit" id="rEve" value="Register Event" (click)="regEV()"/>
+              </div>              
+              <div *ngIf="!updateF && deleteF" style="color:green">
+                <input style="font-size:14px;" type="submit" name="updateEV" value="Update Event" (click)="updateEV()"/>
+                <input style="font-size:14px;" type="submit" name="deleteEV" value="Delete Event" (click)="deleteEV()"/>
+              </div>
+              <div *ngIf="!updateF && !deleteF" style="color:green">
+                <input style="font-size:14px;" type="submit" id="rEve" value="Register Event" (click)="regEV()"/>
+              </div>
+            </div>           
+          </form>
+        </div>
+        <!--Third column-->
+        <div class="col-md-4 flex-center">
+        <!--First row-->        
+              <table class="table table-sm"  style="margin-left : 15%;">
+                  <tr>                  
+                      <th >Joiner ID</th>              
+                      <th >Start Time</th>                      
+                      <th >End Time</th>
+                      <th >Note: Private or Group, Contacts etc</th>
+                  </tr>     
+                  <tr *ngFor=" let item in devent">
+                    <td>{{item.joinerId}}</td>
+                    <td>{{item.start_time}}</td>
+                    <td>{{item.end_time }}</td>
+                    <td>{{item.eventN}}</td>                    
+                  </tr>
+              </table>              
+          <!--/Fourth row-->
+        </div>
+        <!--/Third column-->
+      </div>
+      <!--/First row-->
+    </section>
+    <!--Section: Not enough-->
+    <hr class="mb-5">
+          
+</main>  
+  <!--Main layout-->
+
+<!--Footer-->
+<app-footer></app-footer>
+
+<!-- Initializations -->
+<script type="text/javascript">
+  // Animations initialization
+  new WOW().init();
+</script>
+
+
+ <script>
+  if (!navigator.serviceWorker.controller) {
+      navigator.serviceWorker.register("/static/sw.js").then(function(reg) {
+      //    console.log("Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+ </script>

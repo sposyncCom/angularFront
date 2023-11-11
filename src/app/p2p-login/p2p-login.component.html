@@ -1,0 +1,117 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Live Interative Video Event Streaming</title>  
+    <meta name="description" content="free online video advertisement webcast live event streaming P2P global access IoT robot drone control with streaming django channel webRTC PWA Pion Clients raspberry pi">
+    <meta name="robots" content="index, follow" />
+</head>
+  
+    <div class="navwrapper">
+        <nav class="navbar navbar-inverse" style="background-image:  url( 'assets/img/subbuzz.jpg' ); background-repeat: no-repeat; background-size: cover;">
+        </nav>  
+    </div>
+
+
+    <div class="view full-page-intro"  style="background-image:  url( 'assets/img/subbuzz.jpg'  ); background-repeat: no-repeat; background-size: cover;">
+  
+        <h1 style="font-family: 'Raleway', sans-serif;  text-align: center;margin-bottom: 0px;margin-top: 0px;">P2P Video Messenger & Remote Lab</h1>
+        <br/>
+        <br/>
+        <div class="container" style="display: flex; height: 100px;margin-left: 10%;">              
+              <div style="font-size:20px;">
+                <label>Username </label>&nbsp;
+                <input type="text" name="login-username" [(ngModel)]="userLogin.username" placeholder="Username">               
+              </div>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <div style="font-size:20px; ">
+                <label>Password </label>&nbsp;
+                <input type="password" name="login-password" [(ngModel)]="userLogin.password" placeholder="Password">                 
+              </div>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <div style="font-size:20px;">
+                <button (click)="login()" class="btn btn-primary">Log In</button>                 
+              </div>
+        </div>
+
+
+<main>    
+      <div class="container">    
+        <!--Section: Main info-->
+        <section class="mt-5 wow fadeIn">
+          <!--Grid row-->
+          <video id="vid" style="object-fit:cover;height: 500px; width:100%;border: 0px solid #AAA;" autoplay plays-inline preload="auto" muted>  <source src="assets/img/pionCli1.webm" type="video/webm">
+          </video>
+
+          <div class="container" style="display: flex;">                
+            <div style="width: 70%; ">        
+                <div>
+                  <button id = "switchq" style="font-size:15px;" >Screen Share</button>&nbsp;
+                  <button id = "switchr" style="font-size:15px;" onclick="switchr()" >Recording</button>   
+                      <div>
+                          <br/>
+                          <form id="fileInfo">
+                            <input type="file" id="fileInput" name="files" style="font-size:15px;"/>
+                          </form>                            
+                          <button onclick = "sendFile()" id="sendFile" type="submit"  style="font-size:15px;" >File Share</button>                          
+                          <a id="download"></a>    
+                      </div>
+                </div>
+          
+                <div id="diffRecord" style="display:none;" value="Your Video">   
+                  <button id="sttRecord" style="font-size:13px;" type="submit" (click)="start()" formtarget="_blank" >Start</button>
+                    <button id="stpRecord" style="font-size:13px;" type="submit" (click)="stop()" formtarget="_blank" >Stop</button>
+                    <button id="dnload" style="font-size:13px;" type="submit" (click)="download()" formtarget="_blank" >Download</button>                
+                    <button style="font-size:15px;" onclick="lSelect()">MLmode</button>    
+                </div>  
+            </div>  
+          </div>               
+        </section>
+        <!--Section: Main info-->  
+        <hr class="my-5">
+        
+        <section class="mt-5 wow fadeIn">
+          <h3 style="font-family: 'Raleway', sans-serif;  text-align: center;margin-bottom: 10px;margin-top: 0px;">Messages</h3>
+          <!--Grid row-->
+          <div class="row">          
+            <!--Grid column-->
+            <textarea id="dataChannelComb" style="overflow: auto;margin-left:5%;width: 90%;font-size: 16pt " rows="6" data-min-rows='3' ></textarea>            
+            <div class="container" style="display: flex; height: 50px;">  
+              <div style="width: 40%; margin-left:5%;margin-right:0px; margin-top:10px;">  
+                    <div id="lDiv" style="display: none;">
+                      <select id="ilSelect" style="font-size:15px;" >              
+                        <!--<option value="">videoinput#1</option> -->
+                      </select> &nbsp;
+                      <button id="langButton" style="font-size:15px;" >SendTrans</button>  &nbsp;&nbsp;             
+                    </div>                  
+              </div>          
+  
+              <div style="flex-grow: 1; margin-left:25%;margin-right:0px;">       
+                <button id="sendButton" type="submit"  style="font-size:17px;" class="btn btn-primary input-xs">Send</button>
+              </div>          
+            </div>  
+          </div>
+          <!--Grid row-->  
+        </section>
+      </div>    
+        <!--Container-->
+</main>
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn" style="height:210px;">
+    <br>   
+    <section class="mt-5 wow fadeIn" style="margin-left:40%">         
+              <div class="col-md col-lg-offset-6 flex-center">            
+                  <a routerLink="/signUp" style="font-size:20px;" routerLinkActive="active"> <button class="btn btn-primary btn-block" style="font-size:15px;width:150px;color:rgb(226, 223, 43);" ><strong>Sign Up</strong></button></a>
+                  &nbsp;&nbsp;             
+              </div>        
+    </section>
+   
+    <br/><br/><p>FUTURE DIMENSION contact:support@sposync.com</p>   
+        <div class="footer-copyright py-3">
+      
+          © 2019 Copyright:
+          <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+        </div>
+        <!--/.Copyright-->
+</footer>

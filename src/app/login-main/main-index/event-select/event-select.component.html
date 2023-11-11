@@ -1,0 +1,82 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Live Interative Video Event Streaming</title>
+  <!-- Font Awesome -->  
+  <meta name="description" content="free online video advertisement webcast live event streaming P2P global access IoT robot drone control with streaming django channel webRTC PWA Pion Clients raspberry pi">
+  <meta name="robots" content="index, follow" />   
+</head>
+
+  <!-- Navbar -->
+  <app-nav-main></app-nav-main>
+
+  <div class="view full-page-intro"  style="background-image:  url( 'assets/img/subbuzz.jpg'  ); background-repeat: no-repeat; background-size: cover;">
+
+      <!-- Content -->
+      <div class="container">
+      <br>
+      <br>
+      <br>
+        <h1 style="color:white;font-family: 'Raleway', sans-serif;  text-align: center;margin-bottom: 0px;margin-top: 20px;">Dream Spot Streaming</h1>
+          <h2 style="color:white;font-family: 'Raleway', sans-serif; text-align: center;margin-bottom: 30px;margin-top: 10px;">Free Advertisement Video Promting Your Products Service</h2>
+            <div id="map-canvas" style="height: 430px; border: 0px solid #AAA;">
+            </div>   
+      </div>
+      <!-- Content Container-->
+  </div>
+
+  <!--Main layout-->
+<main>  
+    <section class="mt-5 wow fadeIn">  
+    
+      <h2 style="font-family: 'Raleway', sans-serif; text-align: center;margin-bottom: 10px;margin-top: 0px;">Find Events & Join</h2>
+      <h2 style="font-family: 'Raleway', sans-serif; text-align: center;margin-bottom: 30px;margin-top: 0px;">Watch Video Streaming</h2>
+      <!--Grid row-->
+      <div class="row"> 
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">                    
+          <div class="col-md col-lg-offset-2 flex-center">
+            <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()">
+                <label style="font-size:16px;">Event Type</label>                    
+                    <select class="form-control" formControlName="eventType" >
+                        <option [ngValue]="null" disabled>Choose your Event Type</option>
+                        <option *ngFor="let lang of allEventType" [ngValue]="lang" >{{lang}}</option>                          
+                    </select>
+                <label style="font-size:16px;width: 100px">Event Notes</label>
+                <input type="text" class="form-control" formControlName="eventNote">
+                <button class="btn btn-primary btn-block" type="submit" >Search Events</button>
+            </form>        
+          </div>  
+        </div>
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+              <div class="col-md col-lg-offset-2 flex-center">              
+                <label style="font-size:16px;">Event Select</label>                    
+                <input type="text" placeholder = "Event ID for Connection" [(ngModel)]="varslug"/>
+                <button class="btn btn-primary btn-block" type="submit" (click)="selectClick(varslug)" formtarget="_blank" >Select</button>    
+              </div>              
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+<hr class="mb-5">
+  
+</main>
+  <!--Main layout-->
+
+  <app-footer></app-footer>
+
+<!-- Initializations -->
+<script type="text/javascript">
+  // Animations initialization
+  new WOW().init();
+</script>
+<script>
+  if (!navigator.serviceWorker.controller) {
+      navigator.serviceWorker.register("/static/sw.js").then(function(reg) {
+      //    console.log("Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+ </script>

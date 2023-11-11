@@ -1,0 +1,140 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Live Interative Video Event Streaming</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <meta name="description" content="free online video advertisement webcast live event streaming P2P global access IoT robot drone control with streaming django channel webRTC PWA Pion Clients raspberry pi">
+  <meta name="robots" content="index, follow" />    
+</head>
+  <!-- Navbar -->
+  <app-nav-main></app-nav-main>
+
+
+
+
+<main>
+  <div class="container">
+  <br/>
+  <br/>
+  <br/>
+
+    <h1 class="h1 text-center mb-5">Dream Spot Streaming</h1>
+    <!--Section: Main info-->
+    <section class="mt-5 wow fadeIn">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">      
+            <button id = "switchp" style="font-size:13px;"  type="submit" (click)="switchMonitor()" formtarget="_blank" >forMonitor</button>
+            <button id = "switchv" style="font-size:13px;"  type="submit" (click)="videoMute()" formtarget="_blank" >Video Mute</button>
+            <button id = "switcha" style="font-size:13px;"  type="submit" (click)="audioMute()" formtarget="_blank" >Audio Mute</button>
+            <br/>                
+            <div>
+                <br/>
+                <div id="difference5" style="display:none;" value="Your Video" #difference5>
+                    <video id="localVideo"   width="90%" height="80%"  autoplay #localVideo></video>
+                </div>
+                <br/>
+                <div id="difference6" value="Your Video" style="display:inline;" #difference6>                
+                    <img id="remoteImage"  style="display:inline;" width="70%" height="70%" autoplay (click)="fullscreen($event)" #remoteImage/>                  
+                    <video id="remoteVideo"   width="90%" height="80%"  autoplay (click)="fullscreen($event)" #remoteVideo></video>              
+                    <audio id="remoteAudio" style="display:none;" autoplay #remoteAudio></audio>
+                </div>
+                <div id="rdiffRecord" style="display:none;" value="Your Video" #rdiffRecord>            
+                    <button id="rsttRecord" style="font-size:13px;" (click)="rsttButton()">Start</button>
+                    <button id="rstpRecord" style="font-size:13px;" (click)="stpButton()">Stop</button>
+                    <button id="rdnload" style="font-size:13px;" (click)="dnButton()">Download</button>
+                </div>          
+            </div>
+        <!--Grid column-->
+        </div>
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">              
+            <div class = "flashme">
+              <button class="btn btn-primary btn-block" type="submit" id = "callButton"  disabled style="font-size:16px;color:rgb(226, 223, 43);" (click)="callJS()" #callButton ><strong>Try Connect</strong></button>
+            </div>
+            <table class="table table-sm">
+              <tr>                        
+                <th >Event Hours</th>              
+                <th >Event Infos</th>    
+              </tr>
+              <tr>                 
+                <td  style="font-size:10px;">{{ poste }}</td>
+                <td  style="font-size:10px;">{{ postn }}</td>
+              </tr>              
+            </table>
+            <div class="table-responsive" >
+                <form *ngIf="privateRForm" [formGroup]="privateRForm" (ngSubmit)="onPrivateRequestSubmit()">
+                  <strong>Request Private Meeting: <input type="submit" value="Confirm" /> </strong>
+                      <table class="form-group">                                      
+                            <tr>                            
+                              <th >Mode Set</th>              
+                              <th >Start Time</th>                
+                              <th >End Time</th>
+                              <th >Note: Private or Group, Contacts etc</th>                              
+                            </tr>              
+                            <tr>
+                              <td ><input type="checkbox" class="form-control" style="font-size:14px;" formControlName="eventMode" ></td>
+                              <td ><input type="datetime-local" class="form-control" style="font-size:14px;" value = "{{ this.startTime |date:'yyyy-MM-dd hh.mm ss'  }}" formControlName="eventStart"></td>
+                              <td ><input type="datetime-local" class="form-control" style="font-size:14px;" value = "{{ this.endTime |date:'yyyy-MM-dd hh.mm ss'  }}" formControlName="eventEnd"></td>
+                              <td ><input type="text" class="form-control" style="font-size:14px;" formControlName="eventNote" placeholder = "contacts, URL, request Notes"></td>
+                            </tr>                              
+                      </table>                  
+                </form>  
+            </div>                        
+            <br/>
+            <div>  
+              <button class="btn btn-primary btn-block" type="submit" disabled id = "hangupButton" (click)="disconnect()" formtarget="_blank" #hangupButton >Disconnect</button>
+            </div>
+          </div>  
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+    <!--Section: Main info-->
+    <hr class="my-5">
+    
+    <section class="mt-5 wow fadeIn">
+      <h3 class="h3 text-center mb-5">Messages</h3>      
+      <!--Grid row-->
+      <div class="row">      
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">                
+            <div class="col-md col-lg-offset-2 flex-center" >
+              <textarea id="dataChannelSend" style="overflow: auto;" cols="100" rows="4" disabled placeholder="ME" data-min-rows='3' [(ngModel)] = "messengerSend" #dataChannelSend></textarea>     
+              <br/>
+              <button id="sendButton" type="submit"  class="btn btn-primary input-xs" (click)="dataSend()" #sendButton>Send</button>              
+            </div>
+        </div>
+        <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+          <div class="col-md col-lg-offset-2 flex-center">
+              <textarea id="dataChannelReceive" style="overflow: auto;"  cols="100" rows="4" disabled placeholder="YOU" data-min-rows='3' #dataChannelReceive></textarea>  
+              <br/>            
+          </div>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+    <!--Section: Main info-->
+  </div>
+</main>
+  <!--Main layout-->
+  <app-footer></app-footer>
+
+  <!-- Initializations -->
+<script type="text/javascript">
+  // Animations initialization
+  new WOW().init();
+</script>
+  <script>
+  if (!navigator.serviceWorker.controller) {
+      navigator.serviceWorker.register("/static/sw.js").then(function(reg) {
+      //    console.log("Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+  </script>

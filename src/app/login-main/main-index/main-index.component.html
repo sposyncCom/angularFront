@@ -1,0 +1,102 @@
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Live Interative Video Event Streaming</title> 
+  <meta name="description" content="free online video advertisement webcast live event streaming P2P global access IoT robot drone control with streaming django channel webRTC PWA Pion Clients raspberry pi ">
+  <meta name="robots" content="index, follow" />
+</head>
+
+  <app-nav-main></app-nav-main>
+
+  <!-- Full Page Intro -->
+  <div class="view full-page-intro"  style="background-image:  url( 'assets/img/subbuzz.jpg'  ); background-repeat: no-repeat; background-size: cover;">
+    
+      <!-- Content -->
+      <div class="container">
+          <br>
+          <br>
+          <br>
+          <h1 style="color:white;font-family: 'Raleway', sans-serif;  text-align: center;margin-bottom: 0px;margin-top: 20px;">Dream Spot Streaming</h1>
+          <h2 style="color:white;font-family: 'Raleway', sans-serif; text-align: center;margin-bottom: 40px;margin-top: 20px;">Free Advertisement Video Promting Your Products Service</h2>
+        
+          <div id="map-canvas" style="height: 420px; width:100%;border: 0px solid #AAA;">            
+          </div>
+            <!--Grid row-->
+          <div class="row wow fadeIn">
+          </div>
+            <!--Grid row-->
+      </div>
+      <!-- Content Container-->
+  </div>
+  <!-- Full Page Intro -->
+
+  <!--Main layout-->
+<main>
+
+  <div class="container" *ngIf="is_authenticated">
+
+    <hr class="my-5">
+
+    <!--Section: Not enough-->
+    <section class="mt-5 wow fadeIn">
+  
+      <!--Grid row-->
+      <div class="row">
+      
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">   
+                      
+          <div class="text-center">
+            <p style="font-size:20px;color: rgb(102, 49, 14);"><a routerLink="/event-select" class="tm-text-primary" routerLinkActive="active"> <strong>Join an Event</strong></a>
+            </p>
+          </div>
+          <div class="text-center">
+            <p style="color: rgb(102, 49, 14);font-size:20px;"><a routerLink="/event-host" class="tm-text-primary" routerLinkActive="active"> <strong>Host an Event</strong></a>
+            </p>
+          </div>  
+        
+        </div>
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+        
+          <div class="text-center">
+            <p style="color: rgb(102, 49, 14);font-size:20px;"><a routerLink="/event-register" class="tm-text-primary" routerLinkActive="active"> <strong>Event Register for Hosting</strong></a>
+            </p>
+          </div>  
+          <div class="text-center">
+            <p style="color: rgb(102, 49, 14);font-size:16px;">Change your profile?<a routerLink="/setProfile" class="tm-text-primary" routerLinkActive="active"> <strong>Change profile</strong></a>
+            </p>
+          </div>  
+        
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+
+    <hr class="mb-5">
+
+
+  </div>
+
+  
+</main>
+
+  <app-footer></app-footer>
+
+<!-- Initializations -->
+<script type="text/javascript">
+  // Animations initialization
+  new WOW().init();
+</script>
+ <script>
+  if (!navigator.serviceWorker.controller) {
+      navigator.serviceWorker.register("/static/sw.js").then(function(reg) {
+      //    console.log("Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+ </script>
+
+

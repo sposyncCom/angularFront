@@ -1,0 +1,136 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Live Interative Video Event Streaming</title>    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">  
+    <meta name="description" content="free online video advertisement webcast live event streaming P2P global access IoT robot drone control with streaming django channel webRTC PWA Pion Clients raspberry pi">
+    <meta name="robots" content="index, follow" />
+  </head>
+    
+    <!-- Navbar -->
+    <app-nav-main></app-nav-main>   
+  
+  <main>
+  
+    <div class="container">
+    <br/>
+    <br/>
+    <br/>
+      <h1 class="h1 text-center mb-5">Dream Spot Streaming</h1>
+      <!--Section: Main info-->
+      <section class="mt-5 wow fadeIn">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-md-6 mb-4">
+                <div>
+                    <button id = "callMedia" style="font-size:13px;" type="submit" (click)="mediaReady()" formtarget="_blank" #callMedia>Media Ready</button>       
+                    <button id = "switcho" style="font-size:13px;" type="submit" (click)="videoChat()" formtarget="_blank" #switcho>Video Chat</button>
+                    <button id = "switchq" style="font-size:13px;" type="submit" (click)="screenShare()" formtarget="_blank"#switchq>Screen Share</button>
+                    <button id="mixAudio" style="font-size:13px;" type="submit" (click)="mixAudio()" formtarget="_blank" >Screen Sharew/Audio</button>
+                    <button id = "switchr" style="font-size:13px;" type="submit" (click)="recording()" formtarget="_blank" #switchr >Recording</button>     
+                </div>
+                <br/>                      
+                <br/>
+                <div id="videoo" style="display: block;" >
+                    <select id="selectt" style="font-size:13px;" #selectt>
+                    </select>
+                    <button id= "buttonn" style="font-size:13px;" type="submit" formtarget="_blank" #buttonn>Test Media</button>
+                    <button id = "switchv" style="font-size:13px;"  type="submit" (click)="videoMute()" formtarget="_blank" #switchv>Video Mute</button>
+                    <button id = "switcha" style="font-size:13px;"  type="submit" (click)="audioMute()" formtarget="_blank" #switcha>Audio Mute</button>      
+                </div>
+                <div id="diffRecord" style="display:none;" value="Your Video" #diffRecord>   
+                  <button id="sttRecord" style="font-size:13px;" type="submit" (click)="start()" formtarget="_blank" >Start</button>
+                  <button id="stpRecord" style="font-size:13px;" type="submit" (click)="stop()" formtarget="_blank" >Stop</button>
+                  <button id="dnload" style="font-size:13px;" type="submit" (click)="download()" formtarget="_blank" >Download</button>
+                  <button id="alRecord" style="font-size:13px;" type="submit" (click)="allowRecord()" formtarget="_blank" >AllowRecord</button> 
+                </div>
+              <br/>
+              <div>
+                    <div id="difference1" style="display:inline;" value="Your Video" #difference1>
+                      <video id="localVideo"  width="90%" height="80%" autoplay #localVideo></video>
+                    </div>
+
+                    <div id="difference2" style="display:none;" value="Your Video" #difference2>
+                          <div>
+                              <select id="diff2src" style="font-size:13px;" #diff2src>
+                              </select>
+                              <button id="vpbutton" style="font-size:13px;">Right Choice?</button>
+                          </div>
+                          <video id="remoteVideo"  width="90%" height="80%"  autoplay #remoteVideo></video>
+                    </div>
+              </div>
+          </div>
+          <!--Grid column-->
+          <div class="col-md-6 mb-4">                
+          <div class="table-responsive">
+            <table class="table table-sm" style="font-size:11px;">
+              <tr>                   
+                  <th >People Joined</th>                    
+                  <th >Number of People</th>            
+              </tr>       
+              <tr>                                
+                <td ><ul id = "tdjoin" #tdjoin></ul></td>                 
+                <td id = "tdpeo" #tdpeo></td>     
+              </tr>          
+            </table> 
+        
+          </div>              
+          <div>
+            <button class="btn btn-primary btn-block" type="submit" disabled id = "hangupButton" (click)="disconnect()" formtarget="_blank" #hangupButton >Disconnect</button>
+          </div>
+        </div>  
+          <!--Grid column-->
+      </div>
+        <!--Grid row-->
+    </section>
+      <!--Section: Main info-->
+
+      <hr class="my-5">
+      
+      <section class="mt-5 wow fadeIn">
+        <h3 class="h3 text-center mb-5">Messages</h3>        
+        <!--Grid row-->
+        <div class="row">        
+          <!--Grid column-->
+          <div class="col-md-6 mb-4">   
+                      
+              <div class="col-md col-lg-offset-2 flex-center" >
+                  <textarea id="dataChannelSend" style="overflow: auto;" cols="100" rows="4" disabled placeholder="ME" data-min-rows='3' [(ngModel)] = "messengerSend" #dataChannelSend></textarea>                      
+                  <br/>
+                  <button id="sendButton" type="submit"  class="btn btn-primary input-xs" (click)="dataSend()" #sendButton>Send</button>                      
+              </div>
+          </div>
+          <!--Grid column-->
+          <div class="col-md-6 mb-4">
+            <div class="col-md col-lg-offset-2 flex-center">
+                <textarea id="dataChannelReceive" style="overflow: auto;"  cols="100" rows="4" disabled placeholder="YOU" data-min-rows='3' #dataChannelReceive></textarea>  
+                <br/>
+              
+            </div>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </section>
+    </div>
+  </main>
+    <!--Main layout-->
+
+    <app-footer></app-footer>
+  
+    <!-- SCRIPTS -->
+<script type="text/javascript">
+  new WOW().init();
+</script>
+  <script>
+  if (!navigator.serviceWorker.controller) {
+      navigator.serviceWorker.register("/static/sw.js").then(function(reg) {
+      //    console.log("Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+  </script>
+  
+  
+  

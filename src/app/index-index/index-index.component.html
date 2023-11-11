@@ -1,0 +1,500 @@
+<style>
+    :host {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-size: 14px;
+      color: #333;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 8px 0;
+    }
+  
+    p {
+      margin: 0;
+    }
+  
+    .spacer {
+      flex: 1;
+    }
+  
+    .toolbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      background-color: #1976d2;
+      color: white;
+      font-weight: 600;
+    }
+  
+    .toolbar img {
+      margin: 0 16px;
+    }
+  
+    .toolbar #twitter-logo {
+      height: 40px;
+      margin: 0 8px;
+    }
+  
+    .toolbar #youtube-logo {
+      height: 40px;
+      margin: 0 16px;
+    }
+  
+    .toolbar #twitter-logo:hover,
+    .toolbar #youtube-logo:hover {
+      opacity: 0.8;
+    }
+  
+    .content {
+      display: flex;
+      margin: 82px auto 32px;
+      padding: 0 16px;
+      max-width: 960px;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    svg.material-icons {
+      height: 24px;
+      width: auto;
+    }
+  
+    svg.material-icons:not(:last-child) {
+      margin-right: 8px;
+    }
+  
+    .card svg.material-icons path {
+      fill: #888;
+    }
+  
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 16px;
+    }
+  
+    .card {
+      all: unset;
+      border-radius: 4px;
+      border: 1px solid #eee;
+      background-color: #fafafa;
+      height: 40px;
+      width: 200px;
+      margin: 0 8px 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease-in-out;
+      line-height: 24px;
+    }
+  
+    .card-container .card:not(:last-child) {
+      margin-right: 0;
+    }
+  
+    .card.card-small {
+      height: 16px;
+      width: 168px;
+    }
+  
+    .card-container .card:not(.highlight-card) {
+      cursor: pointer;
+    }
+  
+    .card-container .card:not(.highlight-card):hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+    }
+  
+    .card-container .card:not(.highlight-card):hover .material-icons path {
+      fill: rgb(105, 103, 103);
+    }
+  
+    .card.highlight-card {
+      background-color: #1976d2;
+      color: white;
+      font-weight: 600;
+      border: none;
+      width: auto;
+      min-width: 30%;
+      position: relative;
+    }
+  
+    .card.card.highlight-card span {
+      margin-left: 60px;
+    }
+  
+    svg#rocket {
+      width: 80px;
+      position: absolute;
+      left: -10px;
+      top: -24px;
+    }
+  
+    svg#rocket-smoke {
+      height: calc(100vh - 95px);
+      position: absolute;
+      top: 10px;
+      right: 180px;
+      z-index: -10;
+    }
+  
+    a,
+    a:visited,
+    a:hover {
+      color: #1976d2;
+      text-decoration: none;
+    }
+  
+    a:hover {
+      color: #125699;
+    }
+  
+    .terminal {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 6px;
+      padding-top: 45px;
+      margin-top: 8px;
+      overflow: hidden;
+      background-color: rgb(15, 15, 16);
+    }
+  
+    .terminal::before {
+      content: "\2022 \2022 \2022";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: rgb(58, 58, 58);
+      color: #c2c3c4;
+      width: 100%;
+      font-size: 2rem;
+      line-height: 0;
+      padding: 14px 0;
+      text-indent: 4px;
+    }
+  
+    .terminal pre {
+      font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+      color: white;
+      padding: 0 1rem 1rem;
+      margin: 0;
+    }
+  
+    .circle-link {
+      height: 40px;
+      width: 40px;
+      border-radius: 40px;
+      margin: 8px;
+      background-color: white;
+      border: 1px solid #eeeeee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: 1s ease-out;
+    }
+  
+    .circle-link:hover {
+      transform: translateY(-0.25rem);
+      box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    }
+  
+    footer {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      line-height: 20px;
+    }
+  
+    footer a {
+      display: flex;
+      align-items: center;
+    }
+  
+    .github-star-badge {
+      color: #24292e;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      padding: 3px 10px;
+      border: 1px solid rgba(27,31,35,.2);
+      border-radius: 3px;
+      background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+      margin-left: 4px;
+      font-weight: 600;
+    }
+  
+    .github-star-badge:hover {
+      background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
+      border-color: rgba(27,31,35,.35);
+      background-position: -.5em;
+    }
+  
+    .github-star-badge .material-icons {
+      height: 16px;
+      width: 16px;
+      margin-right: 4px;
+    }
+  
+    svg#clouds {
+      position: fixed;
+      bottom: -160px;
+      left: -230px;
+      z-index: -10;
+      width: 1920px;
+    }
+  
+    /* Responsive Styles */
+    @media screen and (max-width: 767px) {
+      .card-container > *:not(.circle-link) ,
+      .terminal {
+        width: 100%;
+      }
+  
+      .card:not(.highlight-card) {
+        height: 16px;
+        margin: 8px 0;
+      }
+  
+      .card.highlight-card span {
+        margin-left: 72px;
+      }
+  
+      svg#rocket-smoke {
+        right: 120px;
+        transform: rotate(-5deg);
+      }
+    }
+  
+    @media screen and (max-width: 575px) {
+      svg#rocket-smoke {
+        display: none;
+        visibility: hidden;
+      }
+    }
+  </style>
+  
+  
+      <div id="loader-wrapper">
+        <div id="loader"></div>
+    
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    
+      </div>
+    
+    <!-- Nav -->
+      <app-nav-index></app-nav-index>
+  
+  <!-- Content -->
+  <main>
+      <div id="intro" class="tm-section">
+          <!-- Intro left -->
+          <div class="tm-section-col tm-content">
+        
+              <div class="tm-media">
+                  <img src="assets/img/gallery/tn/img-18.jpg" alt="free p2p call global access IoT robot drone with streaming"/>
+                  <div class="tm-media-body">
+                      <h2><a routerLink="/p2p-login" class="tm-text-primary" routerLinkActive="active">P2P Call and Access</a></h2>
+  
+                      
+                      <p class="tm-mb-20 tm-text-small">
+                          P2P call is confidential and secure video messenger and provides P2P file share feature as well. 
+                          webRTC data channels enable global access and control so that you navigate your devices such as drones and robots for multimedia 
+                          streaming. We provide Pion WebRTC Client codes - Golang for you to implement devices control and utilize sposync.com service.</p>
+                      <span class="tm-text-secondary tm-media-span tm-text-small">
+                      </span>
+                      <hr class="tm-hr tm-mr">
+                      <p class="tm-mb-20 tm-text-small">
+                          <a href="https://sposync.com/InfoWindowFeedD">Instruction - Device Access</a>
+                      </p>
+                  </div>
+              </div>
+          
+  
+          <div class="tm-media">                   
+               <img src="assets/img/gallery/tn/img-25.jpg" alt="free live virtual online event video streaming"/>
+                
+              <div class="tm-media-body">
+                   <h2><a routerLink="/login-main" class="tm-text-primary" routerLinkActive="active">Live Event Streaming</a></h2>
+         
+                  <p class="tm-mb-20 tm-text-small">
+                You can host live interactive video streaming events and messenger with audiences. 
+                Private mode lets you choose audiences by request and your own icons can be registered.
+                Audiences can access to your events through location-event pair when you register. 
+                Multiple video devices can be switched and events can be recorded.                 
+              </p>      
+                  <span class="tm-text-secondary tm-media-span tm-text-small">                            
+                  </span>
+                  <hr class="tm-hr tm-mr">
+                  <p class="tm-mb-20 tm-text-small">
+                    <a href="https://sposync.com/InfoWindowFeedI">Instruction - Live Video Event Streaming</a>
+                  </p>
+
+                    <a href="https://sposync.com/evevRegister" class="btn btn-primary btn-block" style="color:#c2c3c4;">Register Events</a>
+                  <hr class="tm-hr tm-mr">
+              </div>
+
+          </div>
+              <div class="tm-text-right">
+                  <a href="#services" class="tm-btn tm-btn-next">Next page</a>
+              </div>   
+              
+          </div>
+  
+          <div class="tm-section-col tm-content">
+              <div class="tm-media">
+                   <img src="assets/img/gallery/tn/img-11.jpg" alt="free online video ads security camera"/>
+             
+                  <div class="tm-media-body">
+                      <h2><a href="https://sposync.com/InfoWindowFeedE">Video Ads - Demo</a></h2>
+                      <p class="tm-mb-20 tm-text-small">
+                          Broadcast your recorded or live Ads from your devices through your 
+                          browser and streaming utilities or sposync built-in screen share 
+                          feature. Register your location and corresponding contents infos.
+                      </p>
+                      <span class="tm-text-secondary tm-media-span tm-text-small">
+                      </span>
+                      <hr class="tm-hr tm-mr">
+                      <p class="tm-mb-20 tm-text-small">
+                         <a href="https://sposync.com/InfoWindowFeedM">Instruction - WebCast</a>
+                      </p>
+                      
+                         <a href="https://sposync.com/evevMonitor" class="btn btn-primary btn-block" style="color:#c2c3c4;">Host Events</a>
+                      <hr class="tm-hr tm-mr">
+                  </div>
+              </div>
+  
+       
+          <div class="tm-media">                   
+              <img src="assets/img/gallery/tn/img-26.png" alt="free live virtual online event video streaming"/>
+              <div class="tm-media-body">
+                  <h2><a href="https://sposync.com/InfoWindowFeedE/david_again___263/" >Live Event Streaming - Demo </a></h2>
+                  
+                  <p class="tm-mb-20 tm-text-small">
+                    Share your videos and Ads via point-to-point connection. Search by locations and events keywords. 
+                    Private mode let you set audience.
+                  </p>
+                  
+                  <span class="tm-text-secondary tm-media-span tm-text-small">                            
+                     
+                  </span>
+                  <hr class="tm-hr tm-mr">
+  
+              </div>
+          </div>
+  
+          <div class="tm-media">                   
+            <iframe width="180" height="160" src="https://www.youtube.com/embed/p-9iiTBk_gQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  
+            <div class="tm-media-body">
+                <hr class="tm-hr tm-mr">          
+                <h3><a href="https://youtu.be/p-9iiTBk_gQ" class="tm-text-primary">INTRO SPOSYNC</a></h3>
+              
+                <span class="tm-text-secondary tm-media-span tm-text-small">                            
+                   
+                </span>
+                <hr class="tm-hr tm-mr">
+            </div>
+            
+          </div>
+          
+         </div>
+
+      </div> <!-- #intro -->
+  
+      <div id="services" class="tm-section">
+          <!-- Services left -->
+          <div class="tm-section-col tm-content tm-content-small">
+              <h2 class="tm-text-primary">Service and Solution</h2>
+              <p class="tm-mb-20 tm-text-small">sposync.com is a free service connecting P2P - secure, based on Cloud webRTC mixed Infra with <strong>OPTIMUM bandwidth @ SOHO 
+                  P2P MAX Technology</strong> by Future Dimension Inc. Not only for direct free service but also provide solutions for B2B 
+                  establish their own advanced unified communication soltuions easily.  
+              </p>
+              <p class="tm-mb-20 tm-text-small">
+                  Efficient use of bandwidth utilizing <strong>OPTIMUM bandwidth @ SOHO P2P MAX Technology</strong>, 
+                  thus save power consumption, specially for those who hold a event using their portable device - mobile environment
+              </p>
+              <hr class="tm-hr tm-ml tm-sm-mt-30">
+              <div class="tm-text-right">
+                  <a href="#about" class="tm-btn tm-btn-next">Next page</a>
+              </div>                                                    
+          </div>
+          
+          <!-- Services right -->
+          <div class="tm-section-col tm-content tm-content-small">
+              <h2 class="tm-text-primary">About Us</h2>
+              <p class="tm-mb-20 tm-text-small">
+                  Our goal is to provide and to meet all your needs in connecting your devices and wep apps.
+                  Equipped with robust up-to-date infras and Python-based development such as Django and Flask, 
+                  advanced technologies are instantly reflected into our service and solution.
+              </p>
+              <p class="tm-mb-20 tm-text-small">
+                  We never collect or store customers data except for connecting purpose between peers - users IDs.
+                  We'd like to be your partener for you to increase customer engagement and to build your community.
+                 
+              </p>
+              <hr class="tm-hr tm-mb-50">                
+             
+              <div class="tm-text-right tm-mb-130">
+              </div>                
+          </div>
+      </div> <!-- #services -->
+  
+  
+  
+      <div id="about" class="tm-section">
+
+          <div class="tm-section-col tm-content tm-content-small">
+              <h2 class="tm-text-primary">Contact Us</h2>
+              <p class="tm-mb-20 tm-text-small">
+                You can either comment below or send email to support@sposync.com
+                If your robots drones IoT devices are gloablly accessible for control and streaming free,
+                please leave your contacts here or send email to support@sposync.com
+               </p> 
+              
+            
+                <div class="form-group">
+                  <textarea style="overflow: auto;" cols="100" rows="4" placeholder="Comment" data-min-rows='3' [(ngModel)]="userC">Message</textarea>
+                </div>
+                
+                <button (click)="createPosts()" type="submit" class="btn btn-primary" >
+                  Send
+                </button>   
+              
+              <br>          
+              <br>
+              <footer class="tm-copyright tm-text-small">   
+                <div class="form-group">
+                  
+                  <br><br>
+                  Copyright 2021 Vertex Company  © 2022 Copyright: FDI
+              
+              </div>
+              </footer>              
+          </div>
+  
+          
+      </div> <!-- #about -->
+  
+  
+  </main>
