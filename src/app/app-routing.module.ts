@@ -46,34 +46,7 @@ const routes: Routes = [
   { path: 'signUp', component: SignUpComponent },
   { path: 'setProfile', component: SetProfileComponent , canActivate: [AuthGuard] },
   { path: 'resetPassword', component: ResetPasswordComponent , canActivate: [AuthGuard] },
-  { path: 'logOut', redirectTo: '', pathMatch: 'full'  },
-  
-/*
-
-  { path: '/angular', component: IndexIndexComponent, pathMatch: 'full' },
-
-  { path: '/angular/navindex', component: NavIndexComponent },
-  { path: '/angular/navmain', component: NavMainComponent },
-
-  { path: '/angular/login-main', component: LoginMainComponent  },
-  { path: '/angular/main-index', component: MainIndexComponent , canActivate: [AuthGuard] },
-
-  { path: '/angular/event-host', component: EventHostComponent , canActivate: [AuthGuard] },
-  { path: '/angular/event-register', component: EventRegisterComponent, canActivate: [AuthGuard]  },
-  { path: '/angular/event-registerKwargs', component: EventRegisterComponent, canActivate: [AuthGuard]  },
-  { path: '/angular/event-select', component: EventSelectComponent , canActivate: [AuthGuard] },
-  { path: '/angular/event-join/:calle/:roomId/:pwdCallO/:pwdCallT/:statTime/:statNote', component: EventJoinComponent , canActivate: [AuthGuard] },
-  //this.router.navigate(['/event-join', callee, callId, pwdCallO, pwdCallT, statTime, statNote]);
-				
-  { path: '/angular/p2p-login', component: P2pLoginComponent },
-  { path: '/angular/p2p-call', component: P2pCallComponent , canActivate: [AuthGuard]},
-  { path: '/angular/p2p-lab', component: P2pLabComponent , canActivate: [AuthGuard]},
-
-  { path: '/angular/signUp', component: SignUpComponent },
-  { path: '/angular/setProfile', component: SetProfileComponent , canActivate: [AuthGuard] },
-  { path: '/angular/resetPassword', component: ResetPasswordComponent , canActivate: [AuthGuard] },
-  { path: '/angular/logOut', redirectTo: '', pathMatch: 'full'  },
-*/
+  { path: 'logOut', redirectTo: '', pathMatch: 'full'  }
 ];
 
 @NgModule({
