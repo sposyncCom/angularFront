@@ -49,8 +49,12 @@ Angular + Django REST
    
    Flask-based video relay server.
    
-   Equipped with COTRUN server for P2P connection 
-
+   Equipped with COTRUN server for P2P connection
+   
+   
+6. Checking with Android Native App
+   https://play.google.com/store/apps/details?id=com.sposync.app
+   
 
 # AngularFront
 
